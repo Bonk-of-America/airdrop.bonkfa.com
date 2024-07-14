@@ -15,6 +15,7 @@ import { formatWalletAddress } from '~/utils'
 import { verifyMessage } from 'viem'
 import { db, wallets } from '~/db.server/schema'
 import { eq } from 'drizzle-orm'
+import { BaseConnectWallet } from '~/components/base-connect-wallet'
 
 export const meta: MetaFunction = () => {
 	return [
@@ -140,7 +141,6 @@ export default function Index() {
 	const { address: baseWallet } = useAccount()
 	const { signMessageAsync: signBaseMessage } = useSignMessage()
 	const { connect, connectors } = useConnect()
-	const { disconnect } = useDisconnect()
 	const [registered, setRegistered] = useState(false)
 
 	const connectBaseWallet = () => {
@@ -235,28 +235,9 @@ export default function Index() {
 										</p>
 										<ul className="mb-10 flex flex-wrap items-center justify-center gap-5">
 											<li>
-												{!baseWallet ? (
-													<button
-														className="text-black inline-flex items-center justify-center rounded-md bg-white px-7 py-[14px] text-center text-base font-medium text-dark shadow-1 transition duration-300 ease-in-out hover:bg-gray-2 hover:text-gray-600"
-														type="button"
-														onClick={connectBaseWallet}
-													>
-														Connect
-														<br />
-														Base Wallet
-													</button>
-												) : (
-													<button
-														className="text-black inline-flex items-center justify-center rounded-md bg-white px-7 py-[14px] text-center text-base font-medium text-dark shadow-1 transition duration-300 ease-in-out hover:bg-gray-2 hover:text-gray-600"
-														type="button"
-														onClick={() => disconnect()}
-													>
-														Disconnect
-														<br />
-														Base Wallet
-													</button>
-												)}
+												<BaseConnectWallet />
 											</li>
+											
 											<li>
 												<button
 													className="flex items-center gap-4 rounded-md bg-white/[0.12] px-6 py-[14px] text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-black"
