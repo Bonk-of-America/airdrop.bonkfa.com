@@ -215,8 +215,8 @@ export default function Index() {
 										<p className="mx-auto mb-9 max-w-[600px] text-base font-medium text-white sm:text-lg sm:leading-[1.44]">
 											$BONKFA token is expanding to Base with a pre-sale on
 											Pinksale. Token holders on Solana with 2.5M tokens and up
-											qualify for 1:5 airdrop of Base tokens with these simple
-											steps:
+											qualify for 1:4 airdrop of Base tokens with a 10%
+											distribution per week.
 											<br />
 											<br />
 											{publicKey
